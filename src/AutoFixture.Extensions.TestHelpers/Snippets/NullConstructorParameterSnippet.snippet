@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+		<CodeSnippet Format="1.0.0">
+				<Header>
+						<Title>Null Constructor Parameter Guard Test</Title>
+						<Author>Andrew Morshead</Author>
+						<Description>xUnit unit test for null constructor parameters.</Description>
+						<Shortcut>ngt</Shortcut>
+						<SnippetTypes>
+								<SnippetType>Expansion</SnippetType>
+						</SnippetTypes>
+				</Header>
+				<Snippet>
+						<Declarations>
+								<Literal>
+										<ID>TypeUnderTest</ID>
+										<ToolTip>Replace with the name of the class under test</ToolTip>
+										<Default>MyType</Default>
+								</Literal>
+						</Declarations>
+						<Code Language="CSharp">
+								<![CDATA[
+								[Fact]
+								public void Constructor_throws_if_any_parameter_is_null() =>
+										TestHelper.VerifyConstructorNullGuards<$TypeUnderTest$>();
+								]]>
+						</Code>
+				</Snippet>
+		</CodeSnippet>
+</CodeSnippets>
