@@ -87,7 +87,7 @@ public static class AutoFixtureExtensions
     }
 
     private static FilteringSpecimenBuilder CreateLoggerFactoryCustomization() =>
-        new(new LoggerFactorySpecimenBuilder(), new ExactTypeSpecification(typeof(ILoggerFactory)));
+        new(new LoggerFactorySpecimenBuilder(), new OrRequestSpecification(new ExactTypeSpecification(typeof(ILoggerFactory)), new ExactTypeSpecification(typeof(LoggerFactory))));
 
     private static FilteringSpecimenBuilder CreateSerilogLoggerCustomization() =>
         new(new SerilogLoggerSpecimenBuilder(), new OrRequestSpecification(new ExactTypeSpecification(typeof(Logger)), new ExactTypeSpecification(typeof(ILogger))));
