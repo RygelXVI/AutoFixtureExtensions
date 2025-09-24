@@ -46,6 +46,21 @@ public class TestHelpersSpecification
 
         Assert.Fail();
     }
+
+    [Fact]
+    public void Can_assert_on_equality()
+    {
+        try
+        {
+            TestHelpers.AssertTypeImplementsEquality<MyTest2>();
+        }
+        catch (Exception)
+        {
+            return;            
+        }
+
+        Assert.Fail();
+    }
 }
 
 public class MyTest
@@ -67,4 +82,28 @@ public class MyTest
     {
         return input ?? _input;
     }
+}
+
+public class MyTest2
+{
+    private readonly int _id;
+    private readonly string _note;
+
+    public MyTest2(int id, string note)
+    {
+        ArgumentException.ThrowIfNullOrWhiteSpace(note);
+        _id=id;
+        _note=note;
+    }
+
+    public override bool Equals(object? obj)
+    {
+        return false;
+    }
+
+    public override int GetHashCode()
+    {
+        return _id.GetHashCode();
+    }
+
 }

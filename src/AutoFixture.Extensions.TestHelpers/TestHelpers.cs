@@ -1,4 +1,5 @@
 ﻿using AutoFixture.AutoNSubstitute;
+using AutoFixture.Extensions.TestHelpers.Behaviors;
 using AutoFixture.Idioms;
 using System.Reflection;
 
@@ -40,4 +41,12 @@ public static class TestHelpers
         var assertion = new GuardClauseAssertion(fixture);
         assertion.Verify(typeof(T).GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static));
     }
+
+    public static void AssertTypeImplementsEquality<T>()
+    {
+        var fixture = new Fixture();
+        var assertion = fixture.Create<EqualityAssertion>();
+        assertion.Verify(typeof(T));
+    }
+
 }
