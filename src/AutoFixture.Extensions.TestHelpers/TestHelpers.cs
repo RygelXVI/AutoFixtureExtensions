@@ -1,5 +1,6 @@
 ﻿using AutoFixture.AutoNSubstitute;
 using AutoFixture.Idioms;
+using System.Reflection;
 
 namespace AutoFixture.Extensions.TestHelpers;
 
@@ -17,19 +18,26 @@ public static class TestHelpers
             ? new GuardClauseAssertion(fixture)
             : new GuardClauseAssertion(fixture, new CompositeBehaviorExpectation(behaviourExpectations));
 
-        assertion.Verify(typeof(T).GetConstructors());
+        assertion.Verify(typeof(T).GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance));
     }
 
     public static void AssertConstructorThrowsOnNullArgs<T>(CompositeBehaviorExpectation compositeBehaviorExpectation)
     {
         var fixture = new Fixture().Customize(new AutoNSubstituteCustomization());
         var assertion = new GuardClauseAssertion(fixture, compositeBehaviorExpectation);
-        assertion.Verify(typeof(T).GetConstructors());
+        assertion.Verify(typeof(T).GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance));
     }
 
     public static void AssertConstructorThrowsOnNullArgs<T>(IFixture fixture, CompositeBehaviorExpectation compositeBehaviorExpectation)
     {
         var assertion = new GuardClauseAssertion(fixture, compositeBehaviorExpectation);
-        assertion.Verify(typeof(T).GetConstructors());
+        assertion.Verify(typeof(T).GetConstructors(BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance));
+    }
+
+    public static void AssertMethodThrowsOnNullParameters<T>(string methodName)
+    {
+        var fixture = new Fixture().Customize(new AutoNSubstituteCustomization());
+        var assertion = new GuardClauseAssertion(fixture);
+        assertion.Verify(typeof(T).GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance));
     }
 }
