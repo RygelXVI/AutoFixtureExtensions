@@ -62,8 +62,9 @@ public class MyTest
         return new MyTest(input);
     }
 
+
     private string Fix(string input)
     {
-        return input;
+        return input ?? _input;
     }
 }
