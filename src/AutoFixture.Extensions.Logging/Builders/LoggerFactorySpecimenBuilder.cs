@@ -9,11 +9,7 @@ public class LoggerFactorySpecimenBuilder : ISpecimenBuilder
 
     public object Create(object request, ISpecimenContext context)
     {
-        if (_factory == null)
-        {
-            var logger = context.Create<ILogger>();
-            _factory = LoggerFactory.Create(builder => builder.AddFakeLogging());
-        }
+        _factory ??= LoggerFactory.Create(builder => builder.AddFakeLogging());
         return _factory;
     }
 }
