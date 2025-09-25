@@ -61,6 +61,12 @@ public class TestHelpersSpecification
 
         Assert.Fail();
     }
+
+    [Fact]
+    public void Can_assert_on_equality2()
+    {
+        TestHelpers.AssertTypeImplementsEquality<TestClass3>();
+    }
 }
 
 public class MyTest
@@ -98,6 +104,11 @@ public class MyTest2
 
     public override bool Equals(object? obj)
     {
+        if (obj is MyTest2 other) 
+        {
+            return other._note == _id.ToString();
+        }
+
         return false;
     }
 
@@ -107,3 +118,5 @@ public class MyTest2
     }
 
 }
+
+public record TestClass3(string Input, int Input2);
