@@ -42,10 +42,17 @@ public static class TestHelpers
         assertion.Verify(typeof(T).GetMethod(methodName, BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance | BindingFlags.Static));
     }
 
-    public static void AssertTypeImplementsEquality<T>()
+    public static void AssertTypeImplementsBasicEquality<T>()
     {
         var fixture = new Fixture();
-        var assertion = fixture.Create<EqualityAssertion>();
+        var assertion = fixture.Create<BasicEqualityAssertion>();
+        assertion.Verify(typeof(T));
+    }
+
+    public static void AssertTypeImplementEqualityComparer<T>()
+    {
+        var fixture = new Fixture();
+        var assertion = fixture.Create<FullEqualityComparerAssertion>();
         assertion.Verify(typeof(T));
     }
 

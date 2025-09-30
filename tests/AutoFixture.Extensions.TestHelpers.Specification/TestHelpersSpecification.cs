@@ -52,7 +52,7 @@ public class TestHelpersSpecification
     {
         try
         {
-            TestHelpers.AssertTypeImplementsEquality<MyTest2>();
+            TestHelpers.AssertTypeImplementsBasicEquality<MyTest2>();
         }
         catch (Exception)
         {
@@ -65,7 +65,7 @@ public class TestHelpersSpecification
     [Fact]
     public void Can_assert_on_equality2()
     {
-        TestHelpers.AssertTypeImplementsEquality<TestClass3>();
+        TestHelpers.AssertTypeImplementsBasicEquality<TestClass3>();
     }
 }
 

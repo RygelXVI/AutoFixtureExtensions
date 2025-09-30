@@ -13,8 +13,8 @@ public class LoggingSpecification
         var logger2 = fixture.Freeze<ILogger<TestClass2>>();
 
         Assert.Multiple(
-            () => Assert.IsAssignableFrom<ILogger<TestClass1>>(logger1),
-            () => Assert.IsAssignableFrom<ILogger<TestClass2>>(logger2)
+            () => Assert.IsType<ILogger<TestClass1>>(logger1, exactMatch: false),
+            () => Assert.IsType<ILogger<TestClass2>>(logger2, exactMatch: false)
         );
     }
 }

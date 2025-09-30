@@ -15,9 +15,9 @@ public class Specification
 
         Assert.Multiple(
             () => Assert.NotNull(ex1),
-            () => Assert.IsAssignableFrom<ILogger<TestExample1>>(ex1.Logger),
+            () => Assert.IsType<ILogger<TestExample1>>(ex1.Logger, exactMatch: false),
             () => Assert.NotNull(ex2),
-            () => Assert.IsAssignableFrom<ILogger<TestExample2>>(ex2.Logger)
+            () => Assert.IsType<ILogger<TestExample2>>(ex2.Logger, exactMatch: false)
         );
     }
 
@@ -36,10 +36,10 @@ public class Specification
 
         Assert.Multiple(
             () => Assert.NotNull(ex1),
-            () => Assert.IsAssignableFrom<ILogger<TestExample1>>(ex1.Logger),
+            () => Assert.IsType<ILogger<TestExample1>>(ex1.Logger, exactMatch: false),
             () => Assert.True(((ILogger<TestExample1>)ex1.Logger).IsEnabled(LogLevel.Trace)),
             () => Assert.NotNull(ex2),
-            () => Assert.IsAssignableFrom<ILogger<TestExample2>>(ex2.Logger)
+            () => Assert.IsType<ILogger<TestExample2>>(ex2.Logger, exactMatch: false)
         );
     }
 
@@ -59,10 +59,10 @@ public class Specification
 
         Assert.Multiple(
             () => Assert.NotNull(ex1),
-            () => Assert.IsAssignableFrom<ILogger<TestExample1>>(ex1.Logger),
+            () => Assert.IsType<ILogger<TestExample1>>(ex1.Logger, exactMatch: false),
             () => Assert.True(((ILogger<TestExample1>)ex1.Logger).IsEnabled(LogLevel.Trace)),
             () => Assert.NotNull(ex2),
-            () => Assert.IsAssignableFrom<ILogger<TestExample2>>(ex2.Logger)
+            () => Assert.IsType<ILogger<TestExample2>>(ex2.Logger, exactMatch: false)
         );
     }
 
