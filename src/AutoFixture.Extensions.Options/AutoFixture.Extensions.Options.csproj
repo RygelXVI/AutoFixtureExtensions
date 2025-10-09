@@ -9,7 +9,6 @@
   <ItemGroup>
     <PackageReference Include="AutoFixture" />
     <PackageReference Include="Microsoft.Extensions.Options" />
-    <PackageReference Include="NSubstitute" />
   </ItemGroup>
 
 </Project>

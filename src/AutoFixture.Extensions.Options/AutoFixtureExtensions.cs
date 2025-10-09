@@ -22,7 +22,7 @@ public static class AutoFixtureExtensions
 
     /// <summary>
     /// Allows registrations of a specific instance of an IOptionsMonitor&lt;T&gt; interface.<br/>
-    /// Uses a simple implementation of the IOptionsMonitor&lt;T&gt; interface, which does not provide a mechanism to update values.
+    /// Uses a simple implementation of the IOptionsMonitor&lt;T&gt; interface, which allows updating of the options value directly
     /// </summary>
     /// <typeparam name="TOption">the option type</typeparam>
     /// <param name="value">the options value to be wrapped</param>

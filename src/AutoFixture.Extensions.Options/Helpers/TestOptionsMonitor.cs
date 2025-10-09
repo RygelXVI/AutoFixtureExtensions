@@ -1,31 +1,38 @@
 ﻿using Microsoft.Extensions.Options;
-using NSubstitute;
 
 namespace AutoFixture.Extensions.Options.Helpers;
 
-public class TestOptionsMonitor<TOptions> : IOptionsMonitor<TOptions> where TOptions : class, new()
+public class TestOptionsMonitor<TOptions> : IOptionsMonitor<TOptions>
 {
-    private Action<TOptions, string>? _listener;
+    private readonly List<Action<TOptions, string>> _listeners;
 
-    public TestOptionsMonitor(TOptions currentValue)
+    public TestOptionsMonitor(TOptions initialValue)
     {
-        CurrentValue = currentValue;
+        _listeners = [];
+        CurrentValue = initialValue;
     }
 
     public TOptions CurrentValue { get; private set; }
-
-    public TOptions Get(string? name) =>
-        CurrentValue;
-
-    public void Set(TOptions value)
-    {
-        CurrentValue = value;
-        _listener?.Invoke(value, null!);
-    }
+    public TOptions Get(string? name) => CurrentValue;
 
     public IDisposable OnChange(Action<TOptions, string> listener)
     {
-        _listener = listener;
-        return Substitute.For<IDisposable>();
+        _listeners.Add(listener);
+        return new ActionDisposable(() => _listeners.Remove(listener));
+    }
+
+    public void UpdateOptions(TOptions options)
+    {
+        CurrentValue = options;
+        _listeners.ForEach(listener => listener(options, string.Empty));
+    }
+
+    public sealed class ActionDisposable : IDisposable
+    {
+        readonly Action _action;
+
+        public ActionDisposable(Action action) => _action = action;
+
+        public void Dispose() => _action();
     }
 }
