@@ -5,7 +5,7 @@ namespace AutoFixture.Extensions.Common;
 public static class AutoFixtureExtensions
 {
     /// <summary>
-    /// Registers an instance of a type, together with it's interface
+    /// Registers an instance of a type, together with it's interface. Using this method ensure that the injected instance can be resolved via either the concrete type or the interface type.
     /// </summary>
     /// <typeparam name="TInterface"></typeparam>
     /// <typeparam name="TImplementation"></typeparam>

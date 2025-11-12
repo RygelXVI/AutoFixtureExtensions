@@ -2,65 +2,65 @@
 
 namespace AutoFixture.Extensions.TestHelpers.Behaviors;
 
-public class BehaviorExpectationBuilder
+public class CompositeBehaviorExpectationBuilder
 {
     private readonly List<IBehaviorExpectation> _behaviourExpectations;
 
-    private BehaviorExpectationBuilder(List<IBehaviorExpectation> behaviorExpectations)
+    private CompositeBehaviorExpectationBuilder(List<IBehaviorExpectation> behaviorExpectations)
     {
         _behaviourExpectations = behaviorExpectations;
     }
 
-    public static BehaviorExpectationBuilder WithNullReferenceExpectation(params string[] excludedParameterNames) =>
-        new([new NullReferenceBehaviorExpectation(excludedParameterNames)]);
+    public static CompositeBehaviorExpectationBuilder WithNullReferenceExpectation(params string[] excludedParameterNames) =>
+        new([new NullReferenceWithExclusionsBehaviorExpectation(excludedParameterNames)]);
 
-    public static BehaviorExpectationBuilder WithNoBehaviors() =>
+    public static CompositeBehaviorExpectationBuilder WithNoBehaviors() =>
         new([]);
 
-    public BehaviorExpectationBuilder WithBehaviorExpectation(IBehaviorExpectation behaviorExpectation)
+    public CompositeBehaviorExpectationBuilder WithBehaviorExpectation(IBehaviorExpectation behaviorExpectation)
     {
         _behaviourExpectations.Add(behaviorExpectation);
         return this;
     }
 
-    public BehaviorExpectationBuilder WithStringNullOrWhiteSpaceExpectation()
+    public CompositeBehaviorExpectationBuilder WithStringNullOrWhiteSpaceExpectation()
     {
         _behaviourExpectations.Add(new WhiteSpaceStringBehaviorExpectation());
         _behaviourExpectations.Add(new EmptyStringBehaviorExpectation());
         return this;
     }
 
-    public BehaviorExpectationBuilder WithEmptyGuidExpectation()
+    public CompositeBehaviorExpectationBuilder WithEmptyGuidExpectation()
     {
         _behaviourExpectations.Add(new EmptyGuidBehaviorExpectation());
         return this;
     }
 
-    public BehaviorExpectationBuilder WithNonNegativeDoubleExpectation()
+    public CompositeBehaviorExpectationBuilder WithNonNegativeDoubleExpectation()
     {
         _behaviourExpectations.Add(new InvalidArgumentByTypeBehaviorExpectation<double>(-1d));
         return this;
     }
 
-    public BehaviorExpectationBuilder WithNonNegativeIntegersExpectation()
+    public CompositeBehaviorExpectationBuilder WithNonNegativeIntegersExpectation()
     {
         _behaviourExpectations.Add(new InvalidArgumentByTypeBehaviorExpectation<int>(-1));
         return this;
     }
 
-    public BehaviorExpectationBuilder WithNonNegativeLongExpectation()
+    public CompositeBehaviorExpectationBuilder WithNonNegativeLongExpectation()
     {
         _behaviourExpectations.Add(new InvalidArgumentByTypeBehaviorExpectation<long>(-1L));
         return this;
     }
 
-    public BehaviorExpectationBuilder WithNonNegativeTimeSpanExpectation()
+    public CompositeBehaviorExpectationBuilder WithNonNegativeTimeSpanExpectation()
     {
         _behaviourExpectations.Add(new InvalidArgumentByTypeBehaviorExpectation<TimeSpan>(TimeSpan.FromSeconds(-1)));
         return this;
     }
 
-    public BehaviorExpectationBuilder WithInvalidArgumentByNameExpectation<T>(
+    public CompositeBehaviorExpectationBuilder WithInvalidArgumentByNameExpectation<T>(
         T invalidValue,
         string parameterName)
     {
@@ -68,13 +68,13 @@ public class BehaviorExpectationBuilder
         return this;
     }
 
-    public BehaviorExpectationBuilder WithInvalidArgumentByTypeExpectation<T>(T invalidValue)
+    public CompositeBehaviorExpectationBuilder WithInvalidArgumentByTypeExpectation<T>(T invalidValue)
     {
         _behaviourExpectations.Add(new InvalidArgumentByTypeBehaviorExpectation<T>(invalidValue));
         return this;
     }
 
-    public BehaviorExpectationBuilder WithDefinedEnumExpectation<T>() where T : Enum
+    public CompositeBehaviorExpectationBuilder WithDefinedEnumExpectation<T>() where T : Enum
     {
         var value = (T)(object)int.MaxValue;
         _behaviourExpectations.Add(new InvalidArgumentByTypeBehaviorExpectation<T>(value));

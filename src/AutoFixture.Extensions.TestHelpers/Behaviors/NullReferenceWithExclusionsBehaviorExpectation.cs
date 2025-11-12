@@ -3,11 +3,11 @@ using System.Globalization;
 
 namespace AutoFixture.Extensions.TestHelpers.Behaviors;
 
-public class NullReferenceBehaviorExpectation : IBehaviorExpectation
+public class NullReferenceWithExclusionsBehaviorExpectation : IBehaviorExpectation
 {
     private readonly string[] _excludedParameters;
 
-    public NullReferenceBehaviorExpectation(params string[] excludedParameters)
+    public NullReferenceWithExclusionsBehaviorExpectation(params string[] excludedParameters)
     {
         ArgumentNullException.ThrowIfNull(excludedParameters);
         _excludedParameters = excludedParameters;
