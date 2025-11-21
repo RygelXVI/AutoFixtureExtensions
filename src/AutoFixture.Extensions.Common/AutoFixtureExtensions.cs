@@ -1,4 +1,5 @@
-﻿using AutoFixture.Kernel;
+﻿using AutoFixture.Extensions.Common.Builders;
+using AutoFixture.Kernel;
 
 namespace AutoFixture.Extensions.Common;
 
@@ -48,6 +49,19 @@ public static class AutoFixtureExtensions
         var fixedBuilder = new FixedBuilder(value);
         var filteringSpecimenBuilder = new FilteringSpecimenBuilder(fixedBuilder, parameterSpecification);
         fixture.Customizations.Add(filteringSpecimenBuilder);
+        return fixture;
+    }
+
+    /// <summary>
+    /// Registers a filtering specimen builder that requires a static factory method to create an instance of the target type
+    /// </summary>
+    /// <typeparam name="TTarget">the type to be constructed</typeparam>
+    /// <param name="fixture"></param>
+    /// <returns></returns>
+    public static IFixture WithStaticFactoryConstructedType<TTarget>(this IFixture fixture)
+    {
+        var builder = new StaticFactoryMethodSpecimenBuilder();
+        fixture.Customizations.Add(new FilteringSpecimenBuilder(builder, new ExactTypeSpecification(typeof(TTarget))));
         return fixture;
     }
 

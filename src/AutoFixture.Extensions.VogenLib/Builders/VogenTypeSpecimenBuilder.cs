@@ -1,4 +1,5 @@
 ﻿using AutoFixture.Kernel;
+using System.Reflection;
 
 namespace AutoFixture.Extensions.VogenLib.Builders;
 
@@ -6,9 +7,9 @@ public class VogenTypeSpecimenBuilder : ISpecimenBuilder
 {
     public object Create(object request, ISpecimenContext context)
     {
-        if (request is SeededRequest seededRequest)
+        if (request is SeededRequest seededRequest && seededRequest.Request is Type typeRequest)
         {
-            var requestType = seededRequest.Request.GetType();
+            var requestType = typeRequest.GetTypeInfo();
             var fromMethod = requestType.GetMethod("From");
 
             if (fromMethod != null)
