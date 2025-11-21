@@ -66,6 +66,8 @@ public class Specification
         );
     }
 
+
+
     public class TestExample1
     {
         public TestExample1(ILogger<TestExample1> logger)

@@ -8,19 +8,31 @@ public class VogenTypeSpecification : IRequestSpecification
 {
     public bool IsSatisfiedBy(object request)
     {
-        if (request is SeededRequest seededRequest && seededRequest.Request is Type typeRequest)
+        if (request is Type typeRequest)
+        {
+            return HasVogenAttribute(typeRequest);
+        }
+
+        if (request is SeededRequest seededRequest && seededRequest.Request is Type seededRequestType)
         {            
-            var requestType = typeRequest.GetTypeInfo();
+            return HasVogenAttribute(seededRequestType);
+        }
 
-            if (requestType != null)
+        return false;
+    }
+
+    private static bool HasVogenAttribute(Type typeRequest)
+    {
+        var typeInfo = typeRequest.GetTypeInfo();
+
+        if (typeInfo != null)
+        {
+            var valueObjectAttribute = typeInfo.GetCustomAttributes(typeof(ValueObjectAttribute), false);
+            var valueObjectGenericAttribute = typeInfo.GetCustomAttributes(typeof(ValueObjectAttribute<>), false);
+
+            if (valueObjectAttribute.Any() || valueObjectGenericAttribute.Any())
             {
-                var valueObjectAttribute = requestType.GetCustomAttributes(typeof(ValueObjectAttribute), false);
-                var valueObjectGenericAttribute = requestType.GetCustomAttributes(typeof(ValueObjectAttribute<>), false);
-
-                if (valueObjectAttribute.Any() || valueObjectGenericAttribute.Any())
-                {
-                    return true;
-                }
+                return true;
             }
         }
 

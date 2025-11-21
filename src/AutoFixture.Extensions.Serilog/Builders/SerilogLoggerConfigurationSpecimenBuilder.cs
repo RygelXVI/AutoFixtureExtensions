@@ -15,16 +15,34 @@ public class SerilogLoggerConfigurationSpecimenBuilder : ISpecimenBuilder
 
     public object Create(object request, ISpecimenContext context)
     {
-        if (request is SeededRequest seededRequest && 
-            _loggerConfigurationSpecification.IsSatisfiedBy(seededRequest.Request))
+        var requestType = TryGetRequestType(request);
+
+        return requestType switch
         {
-            return new LoggerConfiguration()
-                .Enrich.FromLogContext()
-                .MinimumLevel.Debug()
-                .WriteTo.InMemory()
-                .WriteTo.Debug();
+            _ when _loggerConfigurationSpecification.IsSatisfiedBy(requestType) => CreateLoggerConfiguration(),
+            _ => new NoSpecimen()
+        };
+    }
+
+    private static Type? TryGetRequestType(object request)
+    {
+        if (request is Type typeRequest)
+        {
+            return typeRequest;
         }
 
-        return new NoSpecimen();
+        if (request is SeededRequest seededRequest && seededRequest.Request is Type seededTypeRequest)
+        {
+            return seededTypeRequest;
+        }
+
+        return null;
     }
+
+    private static LoggerConfiguration CreateLoggerConfiguration() => 
+        new LoggerConfiguration()
+            .Enrich.FromLogContext()
+            .MinimumLevel.Debug()
+            .WriteTo.InMemory()
+            .WriteTo.Debug();
 }
