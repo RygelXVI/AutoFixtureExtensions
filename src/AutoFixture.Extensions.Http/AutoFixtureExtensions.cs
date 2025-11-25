@@ -15,13 +15,58 @@ public static class AutoFixtureExtensions
     /// Uses a simple factory implementation for testing.
     /// </summary>
     /// <param name="fixture"></param>
+    /// <param name="httpClientName">the name of the httpclient</param>
+    /// <param name="mockHttpMessageHandler">the httpMessageHandler for the factory to use</param>
+    /// <returns>IFixture</returns>
+    public static IFixture WithHttpClientFactory(this IFixture fixture, string httpClientName, MockHttpMessageHandler mockHttpMessageHandler)
+    {
+        var httpClient = new Dictionary<string, HttpClient>()
+        {
+            { httpClientName, mockHttpMessageHandler.ToHttpClient() }
+        };
+
+        return WithHttpClientFactory(fixture, httpClient);
+    }
+
+    /// <summary>
+    /// Allows registration of multiple named MockHttpMessageHandlers which the system under test can access via an IHttpClientFactory
+    /// Uses a simple factory implementation for testing.
+    /// </summary>
+    /// <param name="fixture"></param>
     /// <param name="mockHttpMessageHandler">the httpMessageHandler for the factory to use</param>
     /// <param name="httpClientName">the name of the httpclient</param>
     /// <returns>IFixture</returns>
-    public static IFixture WithHttpClientFactory(this IFixture fixture, MockHttpMessageHandler mockHttpMessageHandler, string httpClientName)
+    public static IFixture WithHttpClientFactory(this IFixture fixture, params (string httpClientName, MockHttpMessageHandler mockHttpMessageHandler)[] httpClients)
     {
-        var httpClient = mockHttpMessageHandler.ToHttpClient();
-        var testHttpClientFactory = new TestHttpClientFactory(new KeyValuePair<string, HttpClient>(httpClientName, httpClient));
+        var clients = httpClients.ToDictionary(x => x.httpClientName, x => x.mockHttpMessageHandler.ToHttpClient());
+
+        return WithHttpClientFactory(fixture, clients);
+    }
+
+    /// <summary>
+    /// Allows registration of multiple named MockHttpMessageHandler which the system under test can access via an IHttpClientFactory
+    /// Uses a simple factory implementation for testing.
+    /// </summary>
+    /// <param name="fixture"></param>
+    /// <param name="httpClients">dictionary of MockHttpMessageHandlers to be registered as httpClients</param>
+    /// <returns></returns>
+    public static IFixture WithHttpClientFactory(this IFixture fixture, Dictionary<string, MockHttpMessageHandler> httpMessageHandlers)
+    {
+        var httpClients = httpMessageHandlers.ToDictionary(x => x.Key, x => x.Value.ToHttpClient());
+
+        return WithHttpClientFactory(fixture, httpClients);
+    }
+
+    /// <summary>
+    /// Allows registration of multiple named MockHttpMessageHandler which the system under test can access via an IHttpClientFactory
+    /// Uses a simple factory implementation for testing.
+    /// </summary>
+    /// <param name="fixture"></param>
+    /// <param name="httpClients">dictionary of httpClients to be registered</param>
+    /// <returns></returns>
+    public static IFixture WithHttpClientFactory(this IFixture fixture, Dictionary<string, HttpClient> httpClients)
+    {
+        var testHttpClientFactory = new TestHttpClientFactory(httpClients);
         fixture.Register(() => testHttpClientFactory);
         fixture.Customizations.Add(new TypeRelay(typeof(IHttpClientFactory), typeof(TestHttpClientFactory)));
 

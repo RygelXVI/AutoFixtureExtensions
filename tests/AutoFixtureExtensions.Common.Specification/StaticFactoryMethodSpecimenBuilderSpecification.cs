@@ -1,8 +1,7 @@
-﻿using AutoFixture;
-using AutoFixture.Extensions.Common.Builders;
+﻿using AutoFixture.Extensions.Common.Builders;
 using AutoFixture.Kernel;
 
-namespace AutoFixtureExtensions.Common.Specification;
+namespace AutoFixture.Extensions.Common.Specification;
 
 public class StaticFactoryMethodSpecimenBuilderSpecification
 {
