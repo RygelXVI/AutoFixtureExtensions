@@ -4,9 +4,6 @@
     <PackageReference Include="AutoFixture" />
     <PackageReference Include="AutoFixture.AutoNSubstitute" />
     <PackageReference Include="AutoFixture.Idioms" />
-    <PackageReference Include="System.ComponentModel.TypeConverter" />
-    <PackageReference Include="System.Net.Http" />
-    <PackageReference Include="System.Text.RegularExpressions" />
   </ItemGroup>
 
 </Project>

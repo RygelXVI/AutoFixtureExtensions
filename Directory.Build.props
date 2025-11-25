@@ -1,10 +1,19 @@
 <Project>
 		<PropertyGroup>
-				<TargetFramework>net8.0</TargetFramework>
+				<TargetFrameworks>net8.0;net10.0</TargetFrameworks>
 				<ImplicitUsings>enable</ImplicitUsings>
 				<Nullable>enable</Nullable>
 				<LangVersion>14.0</LangVersion>
 				<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
 				<CheckEolTargetFramework>false</CheckEolTargetFramework>
+				<Deterministic>true</Deterministic>
+				<Configurations>Debug;Release</Configurations>
+				<Copyright>Copyright © Andrew Morshead 2025</Copyright>
+				<GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+				<GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
+				<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
+				<CodeAnalysisCulture>en-US</CodeAnalysisCulture>
+				
+				<Authors>Andrew Morshead</Authors>
 		</PropertyGroup>
 </Project>
