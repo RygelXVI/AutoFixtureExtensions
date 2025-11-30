@@ -4,7 +4,7 @@ using System.Reflection;
 
 namespace AutoFixture.Extensions.Common.Builders;
 
-public class StaticFactoryMethodSpecimenBuilder : ISpecimenBuilder
+public partial class StaticFactoryMethodSpecimenBuilder : ISpecimenBuilder
 {
     public object Create(object request, ISpecimenContext context)
     {
@@ -65,14 +65,4 @@ public class StaticFactoryMethodSpecimenBuilder : ISpecimenBuilder
 
     private static object[] ResolveFactoryParameters(ParameterInfo[] parameters, ISpecimenContext context) =>
         [.. parameters.Select(p => context.Resolve(p.ParameterType))];
-
-
-
-    internal class FactoryMethod
-    {
-        [NotNull]
-        public MethodInfo? Method { get; set; }
-        [NotNull]
-        public ParameterInfo[]? Parameters { get; set; }
-    }
 }
