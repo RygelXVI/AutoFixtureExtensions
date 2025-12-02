@@ -17,6 +17,7 @@
     <Project Path="src/AutoFixture.Extensions.VogenLib/AutoFixture.Extensions.VogenLib.csproj" />
   </Folder>
   <Folder Name="/tests/">
+    <Project Path="tests/AutoFixture.Extensions.Http.Specification/AutoFixture.Extensions.Http.Specification.csproj" Id="574e9751-9d7a-44e6-a9a0-4fd8f1aa9e93" />
     <Project Path="tests/AutoFixture.Extensions.Logging.Specification/AutoFixture.Extensions.Logging.Specification.csproj" Id="db6b5d21-2b8e-4728-b0c4-79656fa60397" />
     <Project Path="tests/AutoFixture.Extensions.Options.Specification/AutoFixture.Extensions.Options.Specification.csproj" Id="c624988f-c9ca-4ef5-96eb-81d3b10a9a46" />
     <Project Path="tests/AutoFixture.Extensions.Serilog.Specification/AutoFixture.Extensions.Serilog.Specification.csproj" />
