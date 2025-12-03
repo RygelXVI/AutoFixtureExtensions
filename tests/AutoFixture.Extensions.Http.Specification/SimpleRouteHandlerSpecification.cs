@@ -34,6 +34,29 @@ public class SimpleRouteHandlerSpecification
     }
 
     [Fact]
+    public void Can_register_multiple_simple_route_handler_with_factory()
+    {
+        var clientName1 = "client1";
+        var clientName2 = "client2";
+
+        var handler1 = new SimpleRouteHandler();
+        var handler2 = new SimpleRouteHandler();
+        var fixture = new Fixture().WithHttpClientFactory((clientName1, handler1), (clientName2, handler2));
+
+        var factory = fixture.Freeze<IHttpClientFactory>();
+
+        Assert.NotNull(factory);
+
+        var client1 = factory.CreateClient(clientName1);
+
+        Assert.NotNull(client1);
+
+        var client2 = factory.CreateClient(clientName2);
+
+        Assert.NotNull(client2);
+    }
+
+    [Fact]
     public async Task Can_register_route_and_response_for_simple_route_handler_directly()
     {
         var fixture = new Fixture().WithHttpClient(("/all", HttpStatusCode.UnavailableForLegalReasons));
