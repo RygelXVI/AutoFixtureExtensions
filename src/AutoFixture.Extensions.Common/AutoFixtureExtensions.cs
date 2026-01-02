@@ -10,7 +10,7 @@ public static class AutoFixtureExtensions
     /// </summary>
     /// <typeparam name="TInterface"></typeparam>
     /// <typeparam name="TImplementation"></typeparam>
-    /// <param name="fixture"></param>
+    /// <param name="fixture">IFixture instance being configured</param>
     /// <param name="implementation"></param>
     /// <returns>IFixture</returns>
     public static IFixture Inject<TInterface, TImplementation>(this IFixture fixture, TImplementation implementation) where TImplementation : class, TInterface
@@ -27,7 +27,7 @@ public static class AutoFixtureExtensions
     /// </summary>
     /// <typeparam name="TInterface"></typeparam>
     /// <typeparam name="TImplementation"></typeparam>
-    /// <param name="fixture"></param>
+    /// <param name="fixture">IFixture instance being configured</param>
     /// <returns>IFixture</returns>
     public static IFixture WithTypeRelay<TInterface, TImplementation>(this IFixture fixture)
     {
@@ -39,7 +39,7 @@ public static class AutoFixtureExtensions
     /// Registers a specific value to be used for any matching parameter. Parameter must match in both type and name.
     /// </summary>
     /// <typeparam name="TParam"></typeparam>
-    /// <param name="fixture"></param>
+    /// <param name="fixture">IFixture instance being configured</param>
     /// <param name="parameterName"></param>
     /// <param name="value"></param>
     /// <returns>IFixture</returns>
@@ -56,7 +56,7 @@ public static class AutoFixtureExtensions
     /// Registers a filtering specimen builder that requires a static factory method to create an instance of the target type
     /// </summary>
     /// <typeparam name="TTarget">the type to be constructed</typeparam>
-    /// <param name="fixture"></param>
+    /// <param name="fixture">IFixture instance being configured</param>
     /// <returns></returns>
     public static IFixture WithStaticFactoryConstructedType<TTarget>(this IFixture fixture)
     {
@@ -70,7 +70,7 @@ public static class AutoFixtureExtensions
     /// </summary>
     /// <typeparam name="TTarget">type to be constructed</typeparam>
     /// <typeparam name="TFactory">type of the factory required to construct the target type</typeparam>
-    /// <param name="fixture"></param>
+    /// <param name="fixture">IFixture instance being configured</param>
     /// <returns></returns>
     public static IFixture WithTypeConstructedByFactory<TTarget, TFactory>(this IFixture fixture)
         where TTarget : class
@@ -88,7 +88,7 @@ public static class AutoFixtureExtensions
     /// <typeparam name="TInterface">interface implemented by the target type</typeparam>
     /// <typeparam name="TTarget">type to be constructed</typeparam>
     /// <typeparam name="TFactory">type of the factory required to construct the target type</typeparam>
-    /// <param name="fixture"></param>
+    /// <param name="fixture">IFixture instance being configured</param>
     /// <returns></returns>
     public static IFixture WithTypeConstructedByFactory<TInterface, TTarget, TFactory>(this IFixture fixture)
         where TTarget : class
