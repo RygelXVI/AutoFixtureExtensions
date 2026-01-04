@@ -1,6 +1,5 @@
 ﻿using AutoFixture.Kernel;
 using System.Reflection;
-using static AutoFixture.Extensions.Common.Builders.StaticFactoryMethodSpecimenBuilder;
 
 namespace AutoFixture.Extensions.Common.Builders;
 

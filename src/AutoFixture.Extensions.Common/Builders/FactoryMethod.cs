@@ -3,13 +3,10 @@ using System.Reflection;
 
 namespace AutoFixture.Extensions.Common.Builders;
 
-public partial class StaticFactoryMethodSpecimenBuilder
+internal class FactoryMethod
 {
-    internal class FactoryMethod
-    {
-        [NotNull]
-        public MethodInfo? Method { get; set; }
-        [NotNull]
-        public ParameterInfo[]? Parameters { get; set; }
-    }
+    [NotNull]
+    public MethodInfo? Method { get; set; }
+    [NotNull]
+    public ParameterInfo[]? Parameters { get; set; }
 }

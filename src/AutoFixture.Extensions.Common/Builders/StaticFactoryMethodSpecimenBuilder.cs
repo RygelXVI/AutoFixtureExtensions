@@ -1,10 +1,9 @@
 ﻿using AutoFixture.Kernel;
-using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
 namespace AutoFixture.Extensions.Common.Builders;
 
-public partial class StaticFactoryMethodSpecimenBuilder : ISpecimenBuilder
+public class StaticFactoryMethodSpecimenBuilder : ISpecimenBuilder
 {
     public object Create(object request, ISpecimenContext context)
     {
