@@ -3,7 +3,10 @@
   <ItemGroup>
     <PackageReference Include="AutoFixture" />
     <PackageReference Include="Microsoft.Extensions.Http" />
-    <PackageReference Include="RichardSzalay.MockHttp" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\AutoFixture.Extensions.Http.Helpers\AutoFixture.Extensions.Http.Helpers.csproj" />
   </ItemGroup>
 
 </Project>

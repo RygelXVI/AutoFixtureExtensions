@@ -6,6 +6,8 @@
     <File Path="readme.md" />
   </Folder>
   <Folder Name="/src/">
+    <Project Path="AutoFixture.Extensions.Http.Helpers/AutoFixture.Extensions.Http.Helpers.csproj" Id="4acd6981-0779-44ed-9020-c55e83d74fd5" />
+    <Project Path="AutoFixture.Extensions.MockHttp/AutoFixture.Extensions.MockHttp.csproj" Id="4ac38960-b005-4655-9d35-d7c1d8d2a830" />
     <Project Path="src/AutoFixture.Extensions.Common/AutoFixture.Extensions.Common.csproj" />
     <Project Path="src/AutoFixture.Extensions.Http/AutoFixture.Extensions.Http.csproj" />
     <Project Path="src/AutoFixture.Extensions.Logging/AutoFixture.Extensions.Logging.csproj" />

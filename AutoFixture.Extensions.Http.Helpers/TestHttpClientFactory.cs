@@ -1,4 +1,6 @@
-﻿namespace AutoFixture.Extensions.Http.Helpers;
+﻿
+
+namespace AutoFixture.Extensions.Http.Helpers;
 
 public class TestHttpClientFactory : IHttpClientFactory
 {
