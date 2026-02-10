@@ -1,5 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+		<PropertyGroup>
+				<GenerateSBOM>true</GenerateSBOM>
+		</PropertyGroup>
   <ItemGroup>
     <PackageReference Include="AutoFixture" />
     <PackageReference Include="Microsoft.Extensions.Http" />

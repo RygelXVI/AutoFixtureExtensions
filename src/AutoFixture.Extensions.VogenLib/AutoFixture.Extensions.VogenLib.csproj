@@ -1,8 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <PackageReference Include="AutoFixture" />
-    <PackageReference Include="Vogen" />
-  </ItemGroup>
+		
+		<PropertyGroup>
+				<GenerateSBOM>true</GenerateSBOM>
+		</PropertyGroup>
+		<ItemGroup>
+				<PackageReference Include="AutoFixture" />
+				<PackageReference Include="Vogen" />
+		</ItemGroup>
 
 </Project>

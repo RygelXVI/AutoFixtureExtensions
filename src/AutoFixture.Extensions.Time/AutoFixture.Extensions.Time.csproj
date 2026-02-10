@@ -1,8 +1,11 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <PackageReference Include="AutoFixture" />
-    <PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
-  </ItemGroup>
+		
+		<PropertyGroup>
+				<GenerateSBOM>true</GenerateSBOM>
+		</PropertyGroup>
+		<ItemGroup>
+				<PackageReference Include="AutoFixture" />
+				<PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+		</ItemGroup>
 
 </Project>

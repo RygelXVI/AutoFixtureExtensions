@@ -1,9 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <PackageReference Include="AutoFixture" />
-    <PackageReference Include="AutoFixture.AutoNSubstitute" />
-    <PackageReference Include="AutoFixture.Idioms" />
-  </ItemGroup>
+		
+		<PropertyGroup>
+				<GenerateSBOM>true</GenerateSBOM>
+		</PropertyGroup>
+		<ItemGroup>
+				<PackageReference Include="AutoFixture" />
+				<PackageReference Include="AutoFixture.AutoNSubstitute" />
+				<PackageReference Include="AutoFixture.Idioms" />
+		</ItemGroup>
 
 </Project>

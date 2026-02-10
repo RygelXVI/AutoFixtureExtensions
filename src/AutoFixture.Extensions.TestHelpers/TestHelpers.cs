@@ -55,5 +55,5 @@ public static class TestHelpers
         var assertion = fixture.Create<FullEqualityComparerAssertion>();
         assertion.Verify(typeof(T));
     }
-
 }
+

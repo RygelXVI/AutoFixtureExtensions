@@ -1,7 +1,9 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <PackageReference Include="AutoFixture" />
-  </ItemGroup>
-
+		<ItemGroup>
+				<PackageReference Include="AutoFixture" />
+		</ItemGroup>
+		<PropertyGroup>
+				<GenerateSBOM>true</GenerateSBOM>
+		</PropertyGroup>
 </Project>

@@ -1,12 +1,15 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
-  <ItemGroup>
-    <PackageReference Include="AutoFixture" />
-    <PackageReference Include="Microsoft.Extensions.Logging" />
-    <PackageReference Include="Serilog" />
-    <PackageReference Include="Serilog.Extensions.Hosting" />
-    <PackageReference Include="Serilog.Sinks.Debug" />
-    <PackageReference Include="Serilog.Sinks.InMemory" />
-  </ItemGroup>
+		
+		<PropertyGroup>
+				<GenerateSBOM>true</GenerateSBOM>
+		</PropertyGroup>
+		<ItemGroup>
+				<PackageReference Include="AutoFixture" />
+				<PackageReference Include="Microsoft.Extensions.Logging" />
+				<PackageReference Include="Serilog" />
+				<PackageReference Include="Serilog.Extensions.Hosting" />
+				<PackageReference Include="Serilog.Sinks.Debug" />
+				<PackageReference Include="Serilog.Sinks.InMemory" />
+		</ItemGroup>
 
 </Project>
