@@ -13,7 +13,7 @@
 				<GenerateAssemblyDescriptionAttribute>false</GenerateAssemblyDescriptionAttribute>
 				<TestingPlatformDotnetTestSupport>true</TestingPlatformDotnetTestSupport>
 				<CodeAnalysisCulture>en-US</CodeAnalysisCulture>
-				
+				<DebugType>embedded</DebugType>
 				<Authors>Andrew Morshead</Authors>
 		</PropertyGroup>
 </Project>

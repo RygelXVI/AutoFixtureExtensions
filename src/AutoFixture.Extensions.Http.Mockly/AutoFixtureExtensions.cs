@@ -1,8 +1,8 @@
 ﻿using AutoFixture.Extensions.Http.Helpers;
 using AutoFixture.Kernel;
-using RichardSzalay.MockHttp;
+using Mockly;
 
-namespace AutoFixture.Extensions.MockHttp;
+namespace AutoFixture.Extensions.Http.Mockly;
 
 public static class AutoFixtureExtensions
 {
@@ -18,11 +18,11 @@ public static class AutoFixtureExtensions
     /// <param name="httpClientName">the name of the httpclient</param>
     /// <param name="mockHttpMessageHandler">the httpMessageHandler for the factory to use</param>
     /// <returns>An updated fixture instance configured with an IHttpClientFactory test implementation.</returns>
-    public static IFixture WithHttpClientFactory(this IFixture fixture, string httpClientName, MockHttpMessageHandler mockHttpMessageHandler)
+    public static IFixture WithHttpClientFactory(this IFixture fixture, string httpClientName, HttpMock httpMock)
     {
         var httpClient = new Dictionary<string, HttpClient>()
         {
-            { httpClientName, mockHttpMessageHandler.ToHttpClient() }
+            { httpClientName, httpMock.GetClient() }
         };
 
         return WithHttpClientFactory(fixture, httpClient);
@@ -36,9 +36,9 @@ public static class AutoFixtureExtensions
     /// <param name="mockHttpMessageHandler">the httpMessageHandler for the factory to use</param>
     /// <param name="httpClientName">the name of the httpclient</param>
     /// <returns>An updated fixture instance configured with an IHttpClientFactory test implementation.</returns>
-    public static IFixture WithHttpClientFactory(this IFixture fixture, params (string httpClientName, MockHttpMessageHandler mockHttpMessageHandler)[] httpClients)
+    public static IFixture WithHttpClientFactory(this IFixture fixture, params (string httpClientName, HttpMock httpMock)[] httpClients)
     {
-        var clients = httpClients.ToDictionary(x => x.httpClientName, x => x.mockHttpMessageHandler.ToHttpClient());
+        var clients = httpClients.ToDictionary(x => x.httpClientName, x => x.httpMock.GetClient());
 
         return WithHttpClientFactory(fixture, clients);
     }
@@ -50,9 +50,9 @@ public static class AutoFixtureExtensions
     /// <param name="fixture">IFixture instance being configured</param>
     /// <param name="httpClients">dictionary of MockHttpMessageHandlers to be registered as httpClients</param>
     /// <returns>An updated fixture instance configured with an IHttpClientFactory test implementation.</returns>
-    public static IFixture WithHttpClientFactory(this IFixture fixture, Dictionary<string, MockHttpMessageHandler> httpMessageHandlers)
+    public static IFixture WithHttpClientFactory(this IFixture fixture, Dictionary<string, HttpMock> httpMessageHandlers)
     {
-        var httpClients = httpMessageHandlers.ToDictionary(x => x.Key, x => x.Value.ToHttpClient());
+        var httpClients = httpMessageHandlers.ToDictionary(x => x.Key, x => x.Value.GetClient());
 
         return WithHttpClientFactory(fixture, httpClients);
     }
@@ -77,11 +77,11 @@ public static class AutoFixtureExtensions
     /// Allows registration of a MockHttpMessageHandler which the system under test access via an HttpClient.
     /// </summary>
     /// <param name="fixture">IFixture instance being configured</param>
-    /// <param name="mockHttpMessageHandler">the httpMessageHandler for the client to use</param>
+    /// <param name="httpMock">the httpMessageHandler for the client to use</param>
     /// <returns>An updated fixture instance configured with an HttpClient.</returns>
-    public static IFixture WithHttpClient(this IFixture fixture, MockHttpMessageHandler mockHttpMessageHandler)
+    public static IFixture WithHttpClient(this IFixture fixture, HttpMock httpMock)
     {
-        var httpClient = mockHttpMessageHandler.ToHttpClient();
+        var httpClient = httpMock.GetClient();
         fixture.Register(() => httpClient);
         return fixture;
     }

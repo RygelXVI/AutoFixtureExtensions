@@ -2,6 +2,7 @@
 
 		<PropertyGroup>
 				<GenerateSBOM>true</GenerateSBOM>
+				<EnablePackageValidation>true</EnablePackageValidation>
 		</PropertyGroup>
 		<ItemGroup>
 				<PackageReference Include="AutoFixture" />

@@ -5,5 +5,7 @@
 		</ItemGroup>
 		<PropertyGroup>
 				<GenerateSBOM>true</GenerateSBOM>
+				<EnablePackageValidation>true</EnablePackageValidation>
+				<Description></Description>
 		</PropertyGroup>
 </Project>
