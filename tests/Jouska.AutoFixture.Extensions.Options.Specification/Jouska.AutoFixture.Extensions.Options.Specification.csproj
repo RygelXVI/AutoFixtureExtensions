@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+		<PropertyGroup>
+        <TargetFramework>net10.0</TargetFramework>
+				<IsPackable>false</IsPackable>
+				<IsTestProject>true</IsTestProject>
+				<OutputType>Exe</OutputType>
+		</PropertyGroup>
+
+		<ItemGroup>
+				<PackageReference Include="coverlet.collector">
+						<PrivateAssets>all</PrivateAssets>
+						<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+				</PackageReference>
+				<PackageReference Include="Microsoft.Extensions.Options" />
+				<PackageReference Include="AutoFixture" />
+				<PackageReference Include="xunit.v3" />
+		</ItemGroup>
+
+		<ItemGroup>
+		  <ProjectReference Include="..\..\src\Jouska.AutoFixture.Extensions.Options\Jouska.AutoFixture.Extensions.Options.csproj" />
+		</ItemGroup>
+
+		<ItemGroup>
+				<Using Include="Xunit" />
+		</ItemGroup>
+
+</Project>

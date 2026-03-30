@@ -1,0 +1,30 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="AutoFixture" />
+        <PackageReference Include="Imposter" />
+    </ItemGroup>
+
+    <PropertyGroup>
+        <PackageId>Jouska.AutoFixture.Extensions.AutoImposter</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Title>AutoFixture Extensions - AutoImposter</Title>
+        <Description>Enables Automock ing using eht the Imposter mnmocking library</Description>
+        <Authors>Andrew Morshead</Authors>
+        <PackageProjectUrl>https://github.com/RygelXVI/AutoFixtureExtensions</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/RygelXVI/AutoFixtureExtensions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+</Project>

@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+		
+		<PropertyGroup>
+        <TargetFrameworks>net8.0;net9.0;net10.0</TargetFrameworks>
+				<GenerateSBOM>true</GenerateSBOM>
+				<EnablePackageValidation>true</EnablePackageValidation>
+		</PropertyGroup>
+		<ItemGroup>
+				<PackageReference Include="AutoFixture" />
+				<PackageReference Include="Microsoft.Extensions.TimeProvider.Testing" />
+		</ItemGroup>
+
+    <PropertyGroup>
+        <PackageId>AutoFixture.Extensions.YourPackageName</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Title>AutoFixture Extensions - Your Package</Title>
+        <Description>Description of what this extension does</Description>
+        <Authors>Andrew Morshead</Authors>
+        <PackageProjectUrl>https://github.com/RygelXVI/AutoFixtureExtensions</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/RygelXVI/AutoFixtureExtensions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+</Project>

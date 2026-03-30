@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+		<PropertyGroup>
+        <TargetFramework>netstandard2.0</TargetFramework>
+				<GenerateSBOM>true</GenerateSBOM>
+				<EnablePackageValidation>true</EnablePackageValidation>
+		</PropertyGroup>
+		<ItemGroup>
+				<PackageReference Include="AutoFixture" />
+				<PackageReference Include="RichardSzalay.MockHttp" />
+		</ItemGroup>
+		<ItemGroup>
+		  <ProjectReference Include="..\Jouska.AutoFixture.Extensions.Http.Helpers\Jouska.AutoFixture.Extensions.Http.Helpers.csproj" />
+		</ItemGroup>
+
+    <PropertyGroup>
+        <PackageId>AutoFixture.Extensions.YourPackageName</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Title>AutoFixture Extensions - Your Package</Title>
+        <Description>Description of what this extension does</Description>
+        <Authors>Andrew Morshead</Authors>
+        <PackageProjectUrl>https://github.com/RygelXVI/AutoFixtureExtensions</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/RygelXVI/AutoFixtureExtensions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+</Project>

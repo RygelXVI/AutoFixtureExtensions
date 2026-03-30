@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+		
+		<PropertyGroup>
+				<GenerateSBOM>true</GenerateSBOM>
+				<EnablePackageValidation>true</EnablePackageValidation>
+        <TargetFramework>netstandard2.0</TargetFramework>
+        <LangVersion>latest</LangVersion>
+		</PropertyGroup>
+		<ItemGroup>
+				<PackageReference Include="AutoFixture" />
+				<PackageReference Include="AutoFixture.AutoNSubstitute" />
+				<PackageReference Include="AutoFixture.Idioms" />
+				<PackageReference Include="System.ComponentModel.TypeConverter" />
+		</ItemGroup>
+
+    <PropertyGroup>
+        <PackageId>AutoFixture.Extensions.YourPackageName</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Title>AutoFixture Extensions - Your Package</Title>
+        <Description>Description of what this extension does</Description>
+        <Authors>Andrew Morshead</Authors>
+        <PackageProjectUrl>https://github.com/RygelXVI/AutoFixtureExtensions</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/RygelXVI/AutoFixtureExtensions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+</Project>
