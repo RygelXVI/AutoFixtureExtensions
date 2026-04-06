@@ -1,6 +1,5 @@
 ﻿using AutoFixture;
 using AutoFixture.Kernel;
-using Jouska.AutoFixture.Extensions.Common.Builders;
 
 namespace Jouska.AutoFixture.Extensions.Common;
 
@@ -50,58 +49,6 @@ public static class AutoFixtureExtensions
         var fixedBuilder = new FixedBuilder(value);
         var filteringSpecimenBuilder = new FilteringSpecimenBuilder(fixedBuilder, parameterSpecification);
         fixture.Customizations.Add(filteringSpecimenBuilder);
-        return fixture;
-    }
-
-    /// <summary>
-    /// Registers a filtering specimen builder that requires a static factory method to create an instance of the target type
-    /// </summary>
-    /// <typeparam name="TTarget">the type to be constructed</typeparam>
-    /// <param name="fixture">IFixture instance being configured</param>
-    /// <returns></returns>
-    public static IFixture WithStaticFactoryConstructedType<TTarget>(this IFixture fixture)
-    {
-        var builder = new StaticFactoryMethodSpecimenBuilder();
-        fixture.Customizations.Add(new FilteringSpecimenBuilder(builder, new ExactTypeSpecification(typeof(TTarget))));
-        return fixture;
-    }
-
-    /// <summary>
-    /// Registers a filtering specimen builder that requires a separate factory type to create an instance of the target type
-    /// </summary>
-    /// <typeparam name="TTarget">type to be constructed</typeparam>
-    /// <typeparam name="TFactory">type of the factory required to construct the target type</typeparam>
-    /// <param name="fixture">IFixture instance being configured</param>
-    /// <returns></returns>
-    public static IFixture WithTypeConstructedByFactory<TTarget, TFactory>(this IFixture fixture)
-        where TTarget : class
-        where TFactory : class
-    {
-        var builder = new FactorySpecimenBuilder<TTarget, TFactory>();
-        fixture.Customizations.Add(new FilteringSpecimenBuilder(builder, new ExactTypeSpecification(typeof(TTarget))));
-        return fixture;
-    }
-
-    /// <summary>
-    /// Registers a filtering specimen builder that requires a separate factory type to create an instance of the target type, and registers a type relay for the interface to the target type.
-    /// Allows for the fixture to resolve requests for either the interface or the target type.
-    /// </summary>
-    /// <typeparam name="TInterface">interface implemented by the target type</typeparam>
-    /// <typeparam name="TTarget">type to be constructed</typeparam>
-    /// <typeparam name="TFactory">type of the factory required to construct the target type</typeparam>
-    /// <param name="fixture">IFixture instance being configured</param>
-    /// <returns></returns>
-    public static IFixture WithTypeConstructedByFactory<TInterface, TTarget, TFactory>(this IFixture fixture)
-        where TTarget : class
-        where TFactory : class
-    {
-        var builder = new FactorySpecimenBuilder<TTarget, TFactory>();
-
-        var requestForTarget = new ExactTypeSpecification(typeof(TTarget));
-        var requestForInterface = new ExactTypeSpecification(typeof(TInterface));
-
-        fixture.Customizations.Add(new FilteringSpecimenBuilder(builder, new OrRequestSpecification(requestForTarget, requestForInterface)));
-        fixture.Customizations.Add(new TypeRelay(typeof(TInterface), typeof(TTarget)));
         return fixture;
     }
 }
