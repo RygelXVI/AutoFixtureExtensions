@@ -14,10 +14,10 @@
 		</ItemGroup>
 
     <PropertyGroup>
-        <PackageId>AutoFixture.Extensions.YourPackageName</PackageId>
+        <PackageId>Jouska.AutoFixture.Extensions.Http.SzalayMock</PackageId>
         <PackageVersion>1.0.0</PackageVersion>
-        <Title>AutoFixture Extensions - Your Package</Title>
-        <Description>Description of what this extension does</Description>
+        <Title>AutoFixture Extensions - Http Szalay Mocking</Title>
+        <Description>Helper package for working with AutoFixture and HttpClients using the Richard Szalay HttpMessageHandler mocking library</Description>
         <Authors>Andrew Morshead</Authors>
         <PackageProjectUrl>https://github.com/RygelXVI/AutoFixtureExtensions</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>

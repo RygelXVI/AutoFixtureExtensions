@@ -11,10 +11,10 @@
 	</ItemGroup>
 
     <PropertyGroup>
-        <PackageId>AutoFixture.Extensions.YourPackageName</PackageId>
+        <PackageId>Jouska.AutoFixture.Extensions.Logging</PackageId>
         <PackageVersion>1.0.0</PackageVersion>
-        <Title>AutoFixture Extensions - Your Package</Title>
-        <Description>Description of what this extension does</Description>
+        <Title>AutoFixture Extensions - Microsoft Extensions Logging</Title>
+        <Description>Helper package for working with AutoFixture and Microsoft Logging</Description>
         <Authors>Andrew Morshead</Authors>
         <PackageProjectUrl>https://github.com/RygelXVI/AutoFixtureExtensions</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>

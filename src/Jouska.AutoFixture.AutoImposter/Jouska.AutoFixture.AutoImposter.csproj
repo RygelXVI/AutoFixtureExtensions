@@ -16,7 +16,7 @@
         <PackageId>Jouska.AutoFixture.Extensions.AutoImposter</PackageId>
         <PackageVersion>1.0.0</PackageVersion>
         <Title>AutoFixture Extensions - AutoImposter</Title>
-        <Description>Enables Automock ing using eht the Imposter mnmocking library</Description>
+        <Description>Enables Automocking using the Imposter mocking library</Description>
         <Authors>Andrew Morshead</Authors>
         <PackageProjectUrl>https://github.com/RygelXVI/AutoFixtureExtensions</PackageProjectUrl>
         <PackageLicenseExpression>MIT</PackageLicenseExpression>
