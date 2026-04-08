@@ -8,6 +8,8 @@ namespace Jouska.AutoFixture.Extensions.TestHelpers;
 
 public static class TestHelpers
 {
+    // TODO: add xml comments
+
     public static void AssertConstructorThrowsOnNullArgs<T>(params IBehaviorExpectation[] behaviourExpectations)
     {
         var fixture = new Fixture().Customize(new AutoNSubstituteCustomization());

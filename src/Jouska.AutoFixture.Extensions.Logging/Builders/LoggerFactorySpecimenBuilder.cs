@@ -6,8 +6,8 @@ namespace Jouska.AutoFixture.Extensions.Logging.Builders;
 
 public class LoggerFactorySpecimenBuilder : ISpecimenBuilder
 {
-    private readonly Action<FakeLogCollectorOptions>? _configureOptions;
     private ILoggerFactory? _factory;
+    private readonly Action<FakeLogCollectorOptions>? _configureOptions;
 
     public LoggerFactorySpecimenBuilder()
     {        
@@ -20,15 +20,10 @@ public class LoggerFactorySpecimenBuilder : ISpecimenBuilder
 
     public object Create(object request, ISpecimenContext context)
     {
-        if (_configureOptions != null)
-        {
-            _factory ??= LoggerFactory.Create(builder => builder.AddFakeLogging(_configureOptions));
-        }
-        else
-        {
-            _factory ??= LoggerFactory.Create(builder => builder.AddFakeLogging());
-        }
-
+        _factory ??= _configureOptions is null 
+                ? new TestableLoggerFactory() 
+                : new TestableLoggerFactory(_configureOptions);
+        
         return _factory;
     }
 }
