@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Testing;
 
-namespace Jouska.AutoFixture.Extensions.Logging;
+namespace Jouska.AutoFixture.Extensions.Logging.Builders;
 
 public sealed class TestableLoggerFactory : ILoggerFactory
 {

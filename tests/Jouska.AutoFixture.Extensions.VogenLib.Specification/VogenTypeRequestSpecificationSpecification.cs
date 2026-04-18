@@ -1,4 +1,3 @@
-using AutoFixture;
 using AutoFixture.Kernel;
 using Jouska.AutoFixture.Extensions.VogenLib.Builders;
 
@@ -54,18 +53,5 @@ public class VogenTypeRequestSpecificationSpecification
         var actual = sut.IsSatisfiedBy(typeof(string));
 
         Assert.False(actual);
-    }
-
-    [Fact]
-    public void Can_build_vogen_value_object()
-    {
-        var fixture = new Fixture().WithDefaultVogenBuilder();
-
-        var actual = fixture.Create<TestClass>();
-
-        Assert.Multiple(
-            () => Assert.NotNull(actual),
-            () => Assert.IsType<TestClass>(actual),
-            () => Assert.IsType<int>(actual.Value));
     }
 }

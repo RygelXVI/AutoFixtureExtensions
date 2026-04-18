@@ -3,6 +3,7 @@ using Jouska.AutoFixture.Extensions.Logging.Builders;
 using AutoFixture.Kernel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Testing;
+using Microsoft.Extensions.Logging.Abstractions;
 
 namespace Jouska.AutoFixture.Extensions.Logging;
 
@@ -23,10 +24,16 @@ public static class AutoFixtureExtensions
         /// </code>
         /// </summary>
         /// <returns>IFixture</returns>
+        public IFixture WithMicrosoftLogging()
+        {
+            fixture.Customizations.Add(CreateFakeLoggerBuilder());
+            return fixture;
+        }
+
         public IFixture WithMicrosoftLogger<T>()
         {
-            fixture.Customizations.Add(new TypeRelay(typeof(ILogger<T>), typeof(FakeLogger<T>)));
             fixture.Register(() => new FakeLogger<T>());
+            fixture.Customizations.Add(new TypeRelay(typeof(ILogger<T>), typeof(FakeLogger<T>)));
 
             return fixture;
         }
@@ -72,6 +79,25 @@ public static class AutoFixtureExtensions
             fixture.Customizations.Add(new TypeRelay(typeof(ILogger<T>), typeof(FakeLogger<T>)));
             fixture.Customizations.Add(new TypeRelay(typeof(ILogger), typeof(FakeLogger)));
             fixture.Register(() => new FakeLogger<T>(FakeLogCollector.Create(options)));
+            return fixture;
+        }
+
+        public IFixture WithNullLogging()
+        {
+            fixture.Customizations.Add(CreateNullLoggerBuilder());
+            return fixture;
+        }
+
+        public IFixture WithNullLogger<T>()
+        {
+            fixture.Register(() => NullLogger<T>.Instance);
+            fixture.Customizations.Add(new TypeRelay(typeof(ILogger<T>), typeof(NullLogger<T>)));
+            return fixture;
+        }
+
+        public IFixture WithNullLoggerFactory()
+        {
+            fixture.Register<ILoggerFactory>(() => NullLoggerFactory.Instance);
             return fixture;
         }
 
@@ -130,7 +156,21 @@ public static class AutoFixtureExtensions
         new(new LoggerFactorySpecimenBuilder(), LoggerFactoryRequest());
 
     private static OrRequestSpecification LoggerFactoryRequest() =>
-        new(new ExactTypeSpecification(typeof(ILoggerFactory)), 
-            new ExactTypeSpecification(typeof(LoggerFactory)), 
+        new(new ExactTypeSpecification(typeof(ILoggerFactory)),
+            new ExactTypeSpecification(typeof(LoggerFactory)),
             new ExactTypeSpecification(typeof(TestableLoggerFactory)));
+
+    private static FilteringSpecimenBuilder CreateNullLoggerBuilder() =>
+        new(new NullLoggerSpecimenBuilder(), NullLoggerRequest());
+
+    private static OrRequestSpecification NullLoggerRequest() =>
+        new(new ExactTypeSpecification(typeof(NullLogger<>)),
+            new ExactTypeSpecification(typeof(ILogger<>)));
+
+    private static FilteringSpecimenBuilder CreateFakeLoggerBuilder() =>
+        new(new FakeLoggerSpecimenBuilder(), FakeLoggerRequest());
+
+    private static OrRequestSpecification FakeLoggerRequest() =>
+        new(new ExactTypeSpecification(typeof(FakeLogger<>)),
+            new ExactTypeSpecification(typeof(ILogger<>)));
 }

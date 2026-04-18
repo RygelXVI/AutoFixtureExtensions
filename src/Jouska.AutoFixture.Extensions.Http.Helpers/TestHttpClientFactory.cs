@@ -2,7 +2,6 @@
 
 public class TestHttpClientFactory : IHttpClientFactory
 {
-
     private readonly Dictionary<string, HttpClient> _clients;
 
     public TestHttpClientFactory(Dictionary<string, HttpClient> clients)

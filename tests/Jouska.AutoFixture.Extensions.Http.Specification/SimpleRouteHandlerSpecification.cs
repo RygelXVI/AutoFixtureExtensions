@@ -7,14 +7,23 @@ namespace Jouska.AutoFixture.Extensions.Http.Specification;
 public class SimpleRouteHandlerSpecification
 {
     [Fact]
-    public void Can_register_simple_route_handler()
+    public async Task Can_register_simple_route_handler()
     {
         var handler = new SimpleRouteHandler();
+        handler.WithRoute("/test", HttpStatusCode.Processing);
+
         var fixture = new Fixture().WithHttpClient(handler);
 
-        var client = fixture.Create<HttpClient>();
+        var client = fixture.Freeze<HttpClientTestSubject>();
 
-        Assert.NotNull(client);
+        Assert.Multiple(
+            () => Assert.NotNull(client),
+            () => Assert.NotNull(client.HttpClient)            
+        );
+
+        var response = await client.HttpClient.GetAsync("test", CancellationToken.None);
+
+        Assert.Equal(HttpStatusCode.Processing, response.StatusCode);
     }
 
     [Fact]
@@ -69,4 +78,23 @@ public class SimpleRouteHandlerSpecification
 
         Assert.Equal(HttpStatusCode.UnavailableForLegalReasons, response.StatusCode);
     }
+}
+
+public class HttpClientFactoryTestSubject
+{
+    public HttpClientFactoryTestSubject(IHttpClientFactory httpClientFactory)
+    {
+        HttpClientFactory = httpClientFactory ?? throw new ArgumentNullException(nameof(httpClientFactory));
+    }
+
+    public IHttpClientFactory HttpClientFactory { get; }
+}
+
+public class HttpClientTestSubject
+{
+    public HttpClientTestSubject(HttpClient httpClient)
+    {
+        HttpClient = httpClient ?? throw new ArgumentNullException(nameof(httpClient));
+    }
+    public HttpClient HttpClient { get; }
 }
