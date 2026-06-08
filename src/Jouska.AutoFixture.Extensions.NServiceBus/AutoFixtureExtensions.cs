@@ -26,23 +26,6 @@ public static class AutoFixtureExtensions
         }
 
         /// <summary>
-        /// Registers an NServiceBus TestableEndpointInstance with the fixture. <br/>
-        /// IEndpointInstance should only be used for advanced scenarios, for most cases you should use IMessageSession. <br/>
-        /// You can access the endpoint instance in your tests by:<br/><br/>
-        /// <code>
-        /// var testableEndpointInstance = fixture.Freeze&lt;IEndpointInstance&gt;();
-        /// </code>
-        /// </summary>
-        /// <returns>IFixture</returns>
-        public IFixture WithTestableEndpointInstance()
-        {
-            fixture.Customizations.Add(new TypeRelay(typeof(IEndpointInstance), typeof(TestableEndpointInstance)));
-            fixture.Register(() => new TestableEndpointInstance());
-
-            return fixture;
-        }
-
-        /// <summary>
         /// Registers a TestableMessageHandlerContext with the fixture. <br/>
         /// To be used when testing message handlers, if you prefer asking the fixture for an IMessageHandlerContext instead of directly creating it. <br/>
         /// You can access the testableMessageHandlerContext in your tests by:<br/><br/>

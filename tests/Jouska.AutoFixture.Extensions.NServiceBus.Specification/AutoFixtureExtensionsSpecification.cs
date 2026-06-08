@@ -22,21 +22,6 @@ public class AutoFixtureExtensionsSpecification
     }
 
     [Fact]
-    public void Can_inject_testable_endpoint_instance()
-    {
-        var fixture = new Fixture().WithTestableEndpointInstance();
-        var testSubject = fixture.Freeze<TestSubject2>();
-
-        var endpoint = testSubject.MessageSession as TestableEndpointInstance;
-
-        Assert.Multiple(
-            () => Assert.IsType<TestSubject2>(testSubject),
-            () => Assert.IsType<IEndpointInstance>(testSubject.MessageSession, exactMatch: false),
-            () => Assert.NotNull(endpoint)
-        );
-    }
-
-    [Fact]
     public void Can_inject_testable_message_handler_context()
     {
         var fixture = new Fixture().WithTestableMessageHandlerContext();
@@ -57,13 +42,4 @@ public class TestSubject
         MessageSession = messageSession;
     }
     public IMessageSession MessageSession { get; }
-}
-
-public class TestSubject2
-{
-    public TestSubject2(IEndpointInstance messageSession)
-    {
-        MessageSession = messageSession;
-    }
-    public IEndpointInstance MessageSession { get; }
 }
