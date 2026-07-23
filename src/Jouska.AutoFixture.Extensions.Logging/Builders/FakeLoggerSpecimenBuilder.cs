@@ -19,7 +19,7 @@ public class FakeLoggerSpecimenBuilder : ISpecimenBuilder
     {
         var requestType = TryGetRequestType(request);
         return requestType != null
-            ? CreateLogger(requestType, context)
+            ? CreateLogger(requestType)
             : new NoSpecimen();
     }
 
@@ -36,15 +36,15 @@ public class FakeLoggerSpecimenBuilder : ISpecimenBuilder
         return null;
     }
 
-    private object CreateLogger(Type type, ISpecimenContext context) =>
+    private object CreateLogger(Type type) =>
         type switch
         {
-            _ when _genericLoggerSpecification.IsSatisfiedBy (type) => CreateGenericLogger(type, context),
+            _ when _genericLoggerSpecification.IsSatisfiedBy (type) => CreateGenericLogger(type),
             _ when _loggerSpecification.IsSatisfiedBy(type) => CreateDefaultLogger(),
             _ => new NoSpecimen()
         };
 
-    private static object CreateGenericLogger(Type type, ISpecimenContext context)
+    private static object CreateGenericLogger(Type type)
     {
         var categoryType = type.UnderlyingSystemType.GetGenericArguments()[0];
         var nullLoggerType = typeof(FakeLogger<>).MakeGenericType(categoryType);

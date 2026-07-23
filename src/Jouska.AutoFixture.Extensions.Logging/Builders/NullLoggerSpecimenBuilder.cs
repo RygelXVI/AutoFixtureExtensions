@@ -1,4 +1,5 @@
-﻿using AutoFixture.Kernel;
+﻿using AutoFixture;
+using AutoFixture.Kernel;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -18,7 +19,7 @@ public class NullLoggerSpecimenBuilder : ISpecimenBuilder
         var requestType = TryGetRequestType(request);
 
         return requestType != null
-            ? CreateLogger(requestType, context)
+            ? CreateLogger(requestType)
             : new NoSpecimen();
     }
 
@@ -37,14 +38,14 @@ public class NullLoggerSpecimenBuilder : ISpecimenBuilder
         return null;
     }
 
-    private object CreateLogger(Type type, ISpecimenContext context) =>
+    private object CreateLogger(Type type) =>
     type switch
     {
-        _ when _genericLoggerSpecification.IsSatisfiedBy(type) => CreateGenericLogger(type, context),
+        _ when _genericLoggerSpecification.IsSatisfiedBy(type) => CreateGenericLogger(type),
         _ => new NoSpecimen()
     };
 
-    private static object CreateGenericLogger(Type type, ISpecimenContext context)
+    private static object CreateGenericLogger(Type type)
     {
         var categoryType = type.UnderlyingSystemType.GetGenericArguments()[0];
         var nullLoggerType = typeof(NullLogger<>).MakeGenericType(categoryType);
