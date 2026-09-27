@@ -19,6 +19,7 @@
     <Project Path="src/Jouska.AutoFixture.Extensions.TestHelpers/Jouska.AutoFixture.Extensions.TestHelpers.csproj" />
     <Project Path="src/Jouska.AutoFixture.Extensions.Time/Jouska.AutoFixture.Extensions.Time.csproj" />
     <Project Path="src/Jouska.AutoFixture.Extensions.VogenLib/Jouska.AutoFixture.Extensions.VogenLib.csproj" />
+    <Project Path="src/Jouska.AutoFixture.NodaTime/Jouska.AutoFixture.Extensions.NodaTime.csproj" Id="a1573737-1887-4926-b186-8e9dd2859d47" />
   </Folder>
   <Folder Name="/tests/">
     <Project Path="tests/Jouska.AutoFixture.AutoImposter.Specification/Jouska.AutoFixture.AutoImposter.Specification.csproj" Id="add71ebd-1241-4424-951c-c6352df627d0" />
@@ -28,6 +29,7 @@
     <Project Path="tests/Jouska.AutoFixture.Extensions.Http.Specification/Jouska.AutoFixture.Extensions.Http.Specification.csproj" Id="574e9751-9d7a-44e6-a9a0-4fd8f1aa9e93" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Http.SzalayMock.Specification/Jouska.AutoFixture.Extensions.Http.SzalayMock.Specification.csproj" Id="d16a757a-009d-499d-8185-e8638a863317" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Logging.Specification/Jouska.AutoFixture.Extensions.Logging.Specification.csproj" Id="db6b5d21-2b8e-4728-b0c4-79656fa60397" />
+    <Project Path="tests/Jouska.AutoFixture.Extensions.NodaTime.Specification/Jouska.AutoFixture.Extensions.NodaTime.Specification.csproj" Id="f7ee8ff3-ac95-441d-b651-bc071f957946" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.NServiceBus.Specification/Jouska.AutoFixture.Extensions.NServiceBus.Specification.csproj" Id="687be61a-b986-499f-96b1-c5998864b6e7" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Options.Specification/Jouska.AutoFixture.Extensions.Options.Specification.csproj" Id="c624988f-c9ca-4ef5-96eb-81d3b10a9a46" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Serilog.Specification/Jouska.AutoFixture.Extensions.Serilog.Specification.csproj" />

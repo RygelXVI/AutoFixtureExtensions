@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+      <TargetFrameworks>netstandard2.0;net8.0;net9.0;net10.0</TargetFrameworks>
+      <GenerateSBOM>true</GenerateSBOM>
+      <EnablePackageValidation>true</EnablePackageValidation>
+    <!--<TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>-->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoFixture" />
+    <PackageReference Include="NodaTime.Testing" />
+  </ItemGroup>
+
+    <PropertyGroup>
+        <PackageId>Jouska.AutoFixture.Extensions.NodaTime</PackageId>
+        <PackageVersion>1.0.0</PackageVersion>
+        <Title>AutoFixture Extensions - NodaTime</Title>
+        <Description>Helper package for working with AutoFixture and NodaTime</Description>
+        <Authors>Andrew Morshead</Authors>
+        <PackageProjectUrl>https://github.com/RygelXVI/AutoFixtureExtensions</PackageProjectUrl>
+        <PackageLicenseExpression>MIT</PackageLicenseExpression>
+        <RepositoryUrl>https://github.com/RygelXVI/AutoFixtureExtensions</RepositoryUrl>
+        <RepositoryType>git</RepositoryType>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    </PropertyGroup>
+
+</Project>
