@@ -1,4 +1,5 @@
 using AutoFixture;
+using System;
 
 namespace Jouska.AutoFixture.Extensions.VogenLib.Specification;
 

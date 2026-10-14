@@ -1,6 +1,7 @@
 using AutoFixture;
 using Jouska.AutoFixture.Extensions.Options.Helpers;
 using Microsoft.Extensions.Options;
+using System;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Jouska.AutoFixture.Extensions.Options.Specification;

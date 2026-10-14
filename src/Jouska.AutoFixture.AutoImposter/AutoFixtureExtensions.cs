@@ -10,6 +10,12 @@ public static class AutoFixtureExtensions
     {
         // TODO: add xml comments
 
+
+        /// <summary>
+        /// Registers AutoImposter with the fixture, allowing the fixture to make use of Imposter generated instances for testing.<br/>
+        /// </summary>
+        /// <param name="assemblies">assemblies where imposter types are registered using the GenerateImposter attribute</param>
+        /// <returns>IFixture</returns>
         public IFixture WithAutoImposter(params Assembly[] assemblies)
         {
             fixture.Customize(new AutoImposterCustomization(assemblies));

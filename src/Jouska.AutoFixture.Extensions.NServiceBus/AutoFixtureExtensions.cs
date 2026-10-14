@@ -17,13 +17,8 @@ public static class AutoFixtureExtensions
         /// </code>
         /// </summary>
         /// <returns>IFixture</returns>
-        public IFixture WithTestableMessageSession()
-        {
-            fixture.Customizations.Add(new TypeRelay(typeof(IMessageSession), typeof(TestableMessageSession)));
-            fixture.Register(() => new TestableMessageSession());
-
-            return fixture;
-        }
+        public IFixture WithTestableMessageSession() =>
+            fixture.WithRegistration<IMessageSession, TestableMessageSession>(() => new TestableMessageSession());
 
         /// <summary>
         /// Registers a TestableMessageHandlerContext with the fixture. <br/>
@@ -34,11 +29,13 @@ public static class AutoFixtureExtensions
         /// </code>
         /// </summary>
         /// <returns>IFixture</returns>
-        public IFixture WithTestableMessageHandlerContext()
-        {
-            fixture.Customizations.Add(new TypeRelay(typeof(IMessageHandlerContext), typeof(TestableMessageHandlerContext)));
-            fixture.Register(() => new TestableMessageHandlerContext());
+        public IFixture WithTestableMessageHandlerContext() =>
+            fixture.WithRegistration<IMessageHandlerContext, TestableMessageHandlerContext>(() => new TestableMessageHandlerContext());
 
+        private IFixture WithRegistration<TFrom, TTo>(Func<TTo> factory) where TTo : TFrom
+        {
+            fixture.Customizations.Add(new TypeRelay(typeof(TFrom), typeof(TTo)));
+            fixture.Register(factory);
             return fixture;
         }
     }

@@ -2,6 +2,8 @@ using AutoFixture;
 using AutoFixture.AutoNSubstitute;
 using AutoFixture.Idioms;
 using Jouska.AutoFixture.Extensions.TestHelpers.Behaviors;
+using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Jouska.AutoFixture.Extensions.TestHelpers.Specification;

@@ -10,7 +10,9 @@
 				<PackageReference Include="AutoFixture" />
 				<PackageReference Include="AutoFixture.AutoNSubstitute" />
 				<PackageReference Include="AutoFixture.Idioms" />
-				<PackageReference Include="System.ComponentModel.TypeConverter" />
+      <PackageReference Include="System.ComponentModel.TypeConverter" />
+      <PackageReference Include="System.Text.RegularExpressions" />
+      <PackageReference Include="System.Reflection.Emit.Lightweight" />
 		</ItemGroup>
 
     <PropertyGroup>

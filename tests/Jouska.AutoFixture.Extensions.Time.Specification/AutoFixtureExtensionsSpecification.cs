@@ -33,7 +33,6 @@ public class AutoFixtureExtensionsSpecification
             () => Assert.Equal(now, subject.TimeProvider.GetUtcNow())
         );
     }
-
 }
 
 

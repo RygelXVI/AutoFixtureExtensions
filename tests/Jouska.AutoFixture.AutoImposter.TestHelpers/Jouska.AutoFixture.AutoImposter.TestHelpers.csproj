@@ -5,6 +5,8 @@
         <LangVersion>latest</LangVersion>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <IsTestProject>false</IsTestProject>
+        <OutputType>library</OutputType>
     </PropertyGroup>
 
 </Project>

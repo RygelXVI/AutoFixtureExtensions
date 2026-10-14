@@ -10,6 +10,7 @@
 				<PackageReference Include="AutoFixture" />
 				<PackageReference Include="System.Net.Http" />
 				<PackageReference Include="Vogen" />
+      <PackageReference Include="System.Text.RegularExpressions" />
 		</ItemGroup>
 
     <PropertyGroup>

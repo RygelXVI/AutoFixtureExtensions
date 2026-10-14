@@ -9,23 +9,18 @@ public static class AutoFixtureExtensions
     extension(IFixture fixture)
     {
         /// <summary>
-        /// Registers a FakeTimeProvider with the fixture, allowing easy testing of code that uses System.TimeProvider.<br/>
+        /// Registers a singleton FakeTimeProvider instance with the fixture, allowing easy testing of code that uses System.TimeProvider.<br/>
         /// You can access this by:<br/><br/>
         /// <code>
         /// var fakeTimeProvider = fixture.Freeze&lt;TimeProvider&gt;();
         /// </code>
         /// </summary>
         /// <returns>IFixture</returns>
-        public IFixture WithFakeTimeProvider()
-        {
-            fixture.Customizations.Add(new TypeRelay(typeof(TimeProvider), typeof(FakeTimeProvider)));
-            fixture.Register(() => new FakeTimeProvider());
-
-            return fixture;
-        }
+        public IFixture WithFakeTimeProvider() => 
+            fixture.Inject<TimeProvider, FakeTimeProvider>(new FakeTimeProvider());
 
         /// <summary>
-        /// Registers a FakeTimeProvider with the fixture, allowing easy testing of code that uses System.TimeProvider. <br/>
+        /// Registers a singleton FakeTimeProvider instance with the fixture, allowing easy testing of code that uses System.TimeProvider. <br/>
         /// Allows you to set the current time of the TimeProvider at the moment of registration.<br/>
         /// You can access this by:<br/><br/>
         /// <code>
@@ -35,11 +30,13 @@ public static class AutoFixtureExtensions
         /// </summary>
         /// <param name="now">the starting time for the TimeProvider to use</param>
         /// <returns>IFixture</returns>
-        public IFixture WithFakeTimeProvider(DateTimeOffset now)
-        {
-            fixture.Customizations.Add(new TypeRelay(typeof(TimeProvider), typeof(FakeTimeProvider)));
-            fixture.Register(() => new FakeTimeProvider(now));
+        public IFixture WithFakeTimeProvider(DateTimeOffset now) =>
+            fixture.Inject<TimeProvider, FakeTimeProvider>(new FakeTimeProvider(now));
 
+        private IFixture Inject<TFrom, TTo>(TTo instance)
+        {
+            fixture.Customizations.Add(new TypeRelay(typeof(TFrom), typeof(TTo)));
+            fixture.Inject(instance);
             return fixture;
         }
     }

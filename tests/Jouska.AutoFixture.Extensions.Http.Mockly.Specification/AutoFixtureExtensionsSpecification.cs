@@ -1,5 +1,9 @@
 ﻿using AutoFixture;
 using Mockly;
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Jouska.AutoFixture.Extensions.Http.Mockly.Specification;
 

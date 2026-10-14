@@ -2,6 +2,7 @@
 using Imposter.Abstractions;
 using Jouska.AutoFixture.AutoImposter.TestHelpers;
 using Microsoft.Testing.Platform.Logging;
+using System;
 using Xunit;
 
 namespace Jouska.AutoFixture.AutoImposter.Specification;

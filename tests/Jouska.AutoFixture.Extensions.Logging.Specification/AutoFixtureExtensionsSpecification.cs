@@ -1,6 +1,9 @@
 using AutoFixture;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Testing;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Jouska.AutoFixture.Extensions.Logging.Specification;
 

@@ -12,6 +12,7 @@
     <Project Path="src/Jouska.AutoFixture.Extensions.Http.Mockly/Jouska.AutoFixture.Extensions.Http.Mockly.csproj" />
     <Project Path="src/Jouska.AutoFixture.Extensions.Http.SzalayMock/Jouska.AutoFixture.Extensions.Http.SzalayMock.csproj" />
     <Project Path="src/Jouska.AutoFixture.Extensions.Http/Jouska.AutoFixture.Extensions.Http.csproj" />
+    <Project Path="src/Jouska.AutoFixture.Extensions.HybridCache/Jouska.AutoFixture.Extensions.HybridCache.csproj" Id="d6978af1-e6b1-4d8b-9575-438a3e47d8c3" />
     <Project Path="src/Jouska.AutoFixture.Extensions.Logging/Jouska.AutoFixture.Extensions.Logging.csproj" />
     <Project Path="src/Jouska.AutoFixture.Extensions.NServiceBus/Jouska.AutoFixture.Extensions.NServiceBus.csproj" />
     <Project Path="src/Jouska.AutoFixture.Extensions.Options/Jouska.AutoFixture.Extensions.Options.csproj" />
@@ -22,12 +23,14 @@
     <Project Path="src/Jouska.AutoFixture.NodaTime/Jouska.AutoFixture.Extensions.NodaTime.csproj" Id="a1573737-1887-4926-b186-8e9dd2859d47" />
   </Folder>
   <Folder Name="/tests/">
+    <File Path="tests/Directory.Build.props" />
     <Project Path="tests/Jouska.AutoFixture.AutoImposter.Specification/Jouska.AutoFixture.AutoImposter.Specification.csproj" Id="add71ebd-1241-4424-951c-c6352df627d0" />
     <Project Path="tests/Jouska.AutoFixture.AutoImposter.TestHelpers/Jouska.AutoFixture.AutoImposter.TestHelpers.csproj" Id="b1f23d02-16b2-41ee-8875-4f8d4a413469" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Common.Specification/Jouska.AutoFixture.Extensions.Common.Specification.csproj" Id="d16dbaed-53be-4cf4-b232-74c92280bdd8" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Http.Mockly.Specification/Jouska.AutoFixture.Extensions.Http.Mockly.Specification.csproj" Id="50bdbfa4-cbab-40fd-9b2a-6772cbf097d9" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Http.Specification/Jouska.AutoFixture.Extensions.Http.Specification.csproj" Id="574e9751-9d7a-44e6-a9a0-4fd8f1aa9e93" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Http.SzalayMock.Specification/Jouska.AutoFixture.Extensions.Http.SzalayMock.Specification.csproj" Id="d16a757a-009d-499d-8185-e8638a863317" />
+    <Project Path="tests/Jouska.AutoFixture.Extensions.HybridCache.Specification/Jouska.AutoFixture.Extensions.HybridCache.Specification.csproj" Id="4cb57cab-bab4-4640-8b73-3ddffcadf1ac" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.Logging.Specification/Jouska.AutoFixture.Extensions.Logging.Specification.csproj" Id="db6b5d21-2b8e-4728-b0c4-79656fa60397" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.NodaTime.Specification/Jouska.AutoFixture.Extensions.NodaTime.Specification.csproj" Id="f7ee8ff3-ac95-441d-b651-bc071f957946" />
     <Project Path="tests/Jouska.AutoFixture.Extensions.NServiceBus.Specification/Jouska.AutoFixture.Extensions.NServiceBus.Specification.csproj" Id="687be61a-b986-499f-96b1-c5998864b6e7" />
